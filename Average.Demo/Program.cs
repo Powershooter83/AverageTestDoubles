@@ -14,8 +14,8 @@ public class Program
         }
         string statistic = args[0].ToLower();
         string path = args[1];
-        Average.FileAccess fileAccess = new Average.FileAccess(path);
-        Average.Average average = new Average.Average(fileAccess);
+        Average.FileAccessImpl fileAccessImpl = new Average.FileAccessImpl(path);
+        Average.Average average = new Average.Average(fileAccessImpl);
         if (statistic.Equals("mean"))
         {
             double result = average.ComputeMeanOfFile();
