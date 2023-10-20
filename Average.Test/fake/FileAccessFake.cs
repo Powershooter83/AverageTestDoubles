@@ -1,7 +1,7 @@
-﻿namespace Average.Test;
+﻿namespace Average.Test.fake;
 
 public class FileAccessFake : IFileAccess {
-    private Dictionary<string, int[]> paths = new();
+    private readonly Dictionary<string, int[]> _paths = new();
 
     public FileAccessFake(string path) {
         this.path = path;
@@ -11,11 +11,11 @@ public class FileAccessFake : IFileAccess {
 
 
     public void AddFakePath(string path, int[] numbers) {
-        paths.Add(path, numbers);
+        _paths.Add(path, numbers);
     }
 
     public List<int> ReadNumbers() {
-        paths.TryGetValue(path, out var values);
+        _paths.TryGetValue(path, out var values);
 
         if (values == null) {
             throw new FileNotFoundException("Die Datei existiert nicht.");
